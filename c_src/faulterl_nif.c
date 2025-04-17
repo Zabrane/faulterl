@@ -58,13 +58,15 @@ int32_t   peek_test_intarray32[] = {4242, 4343, 4444};
 int64_t   peek_test_intarray64[] = {424242, 434343, 444444};
 char *peek_test_string = "It is 42, yes.";
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-field-initializers"
 static ErlNifFunc nif_funcs[] =
 {
     {"peek_int", 5, faulterl_nif_peek},
     {"poke_int", 4, faulterl_nif_poke}
 };
 
-ERL_NIF_TERM faulterl_nif_peek(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM faulterl_nif_peek(ErlNifEnv* env, UNUSED(int argc), const ERL_NIF_TERM argv[])
 {
     char sym[4096];
     int index;
@@ -127,7 +129,7 @@ ERL_NIF_TERM faulterl_nif_peek(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv
     return ATOM_ERROR;
 }
 
-ERL_NIF_TERM faulterl_nif_poke(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
+ERL_NIF_TERM faulterl_nif_poke(ErlNifEnv* env, UNUSED(int argc), const ERL_NIF_TERM argv[])
 {
     char sym[4096], val[4096];
     ErlNifBinary bin;
@@ -176,7 +178,7 @@ ERL_NIF_TERM faulterl_nif_poke(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv
     return ATOM_ERROR;
 }
 
-static int on_load(ErlNifEnv* env, void** priv_data, ERL_NIF_TERM load_info)
+static int on_load(ErlNifEnv* env, UNUSED(void** priv_data), UNUSED(ERL_NIF_TERM load_info))
 {
     // Initialize atoms that we use throughout the NIF.
     ATOM_ALLOCATION_ERROR = enif_make_atom(env, "allocation_error");

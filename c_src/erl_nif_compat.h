@@ -24,6 +24,8 @@ extern "C" {
 
 #include "erl_nif.h"
 
+#define UNUSED(x) x __attribute__((__unused__))
+
 #if ERL_NIF_MAJOR_VERSION == 1 && ERL_NIF_MINOR_VERSION == 0
 
 #define enif_open_resource_type_compat enif_open_resource_type
