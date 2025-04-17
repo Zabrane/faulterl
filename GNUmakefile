@@ -3,7 +3,7 @@ FAULTERL_TAG	 = $(shell git describe --tags)
 REVISION	?= $(shell echo $(FAULTERL_TAG) | sed -e 's/^$(REPO)-//')
 PKG_VERSION	?= $(shell echo $(REVISION) | tr - .)
 BASE_DIR         = $(shell pwd)
-REBAR_BIN := $(shell which rebar)
+REBAR_BIN := $(shell which rebar3)
 ifeq ($(REBAR_BIN),)
 REBAR_BIN = ./rebar
 endif
@@ -16,7 +16,7 @@ all: deps compile
 rebar_post_compile: compile_scripts
 
 deps:
-	./rebar get-deps
+	rebar3 get-deps
 
 compile:
 	$(REBAR_BIN) compile
