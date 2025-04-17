@@ -1,8 +1,9 @@
 .eunit
-deps
+_build
 c_src/*.o
 ebin/*.app
 ebin/*.beam
 ebin/*.escript
 ebin/*.sh
 priv/faulterl.so
+.DS_Store
