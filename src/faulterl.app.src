@@ -1,6 +1,6 @@
 {application, faulterl,
  [
-  {description, ""},
+  {description, "Fault injection for shared/dynamic library function calls"},
   {vsn, "0.1"},
   {modules, []},
   {registered, []},
@@ -8,7 +8,6 @@
                   kernel,
                   stdlib
                  ]},
-  %{mod, {bitcask_app, []}},
   {env, [
         ]}
  ]}.
