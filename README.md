@@ -66,7 +66,7 @@ modify global-scope symbols.  Here is an example.  We build the
     
     % touch /tmp/sample-file
     
-    % env `ebin/example_environment.sh $PWD/priv/lfi` erl -pz ebin
+    % env `ebin/example_environment.sh $PWD/priv/lfi` erl -pz _build/default/lib/faulterl/ebin
 
     1> faulterl_nif:peek8("symbol_does_not_exist").
     not_found
